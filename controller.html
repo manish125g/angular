@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular JS Directive</title>
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="myapp" ng-controller="nameController">
+        First Name : <input type="text" name="firstName" ng-model="name.firstName"><br/>
+        Last Name &nbsp;: <input type="text" name="lastName" ng-model="name.lastName"><br/>
+        Your Full Name is : {{ name.fullName() | uppercase }}.
+    </div>
+    <script>
+        var myAppC = angular.module("myapp", []);
+        myAppC.controller('nameController', function ($scope) {
+            $scope.name = {
+                firstName : "Hello",
+                lastName : "World!",
+                fullName : function(){
+                    var name = $scope.name;
+                    return name.firstName+" "+name.lastName;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

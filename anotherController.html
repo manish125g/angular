@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Another Controller in Angular JS</title>
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="mainApp" ng-controller="multiplyController">
+        <h4>Get the multiple of two numbers.</h4>
+        First Value : <input type="text" name="firstValue" ng-model="multiply.first"><br/>
+        Second Value : <input type="text" name="secondValue" ng-model="multiply.second"><br/>
+        <h4>Multiplication</h4>
+        <p>Your First Value : {{ multiply.first }}</p>
+        <p>Your Second Value : {{ multiply.second }}</p>
+        <p>Multiplication : {{ multiply.multiplication() | currency }}</p>
+    </div>
+    <script>
+        var mainApp = angular.module("mainApp", []);
+        mainApp.controller("multiplyController", function ($scope) {
+            $scope.multiply = {
+                first : 2,
+                second : 2,
+                multiplication : function(){
+                    var multiply = $scope.multiply;
+                    return multiply.first*multiply.second;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
