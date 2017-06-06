@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scope in AngularJS</title>
+</head>
+<body>
+<div ng-app="myApp" ng-controller="oneController">
+    {{ message }}<br/>
+    {{ scope }}
+</div>
+<div ng-controller="twoController">
+    {{ message }}<br/>
+    {{ scope }}
+</div>
+<div ng-controller="threeController">
+    {{ message }}<br/>
+    {{ scope }}
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script>
+    var myApp = angular.module("myApp", []);
+    myApp.controller("oneController", function ($scope) {
+        $scope.message = "In Controller One.";
+        $scope.scope = "First Scope";
+    });
+    myApp.controller("twoController", function ($scope) {
+        $scope.message = "In Controller Two.";
+    });
+    myApp.controller("threeController", function ($scope) {
+        $scope.message = "In Controller Three.";
+        $scope.scope = "Third Scope";
+    });
+</script>
+</body>
+</html>

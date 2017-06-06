@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS with AJAX</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="myapp" ng-controller="ajaxController">
+        <table border="1">
+            <tr ng-repeat="s in students">
+                <td>{{ s.Name }}</td>
+                <td>{{ s.RollNo }}</td>
+                <td>{{ s.Percentage }}</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        var myapp = angular.module("myapp", []);
+
+        myapp.controller("ajaxController", function($scope, $http) {
+            var url = "data.txt";
+            $http.post(url).then(function (response) {
+                $scope.students = response.data;
+            })
+        });
+    </script>
+</body>
+</html>
